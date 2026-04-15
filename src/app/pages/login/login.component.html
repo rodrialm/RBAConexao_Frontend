@@ -1,0 +1,100 @@
+<div class="login-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="navbar-brand">
+                <i class="pi pi-server"></i>
+                <span>RBA Conexões</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Container Principal Centralizado -->
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo e Título -->
+            <div class="login-header">
+                <div class="logo-wrapper">
+                    <img src="/images/logo.png" alt="Logo" class="logo-img" (error)="logoLoaded = false">
+                    <i class="pi pi-server logo-fallback" *ngIf="!logoLoaded"></i>
+                </div>
+                <h2 class="login-title">Acesse Servidor</h2>
+                <p class="login-subtitle">Informe suas credenciais para acessar o sistema</p>
+            </div>
+
+            <!-- Formulário -->
+            <form (ngSubmit)="onSubmit()" class="login-form">
+                <!-- Campo Usuário -->
+                <div class="form-field">
+                    <label for="usuario" class="form-label">
+                        <i class="pi pi-user"></i>
+                        <span>Usuário</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="usuario" 
+                            pInputText 
+                            [(ngModel)]="usuario" 
+                            name="usuario"
+                            class="form-input"
+                            placeholder="Digite seu usuário"
+                            [ngClass]="{'input-error': submitted && !usuario}"
+                            required />
+                        <i class="pi pi-user input-icon"></i>
+                    </div>
+                    <small class="error-message" *ngIf="submitted && !usuario">
+                        Usuário é obrigatório
+                    </small>
+                </div>
+
+                <!-- Campo Senha -->
+                <div class="form-field">
+                    <label for="senha" class="form-label">
+                        <i class="pi pi-lock"></i>
+                        <span>Senha</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="senha" 
+                            pInputText 
+                            [(ngModel)]="senha" 
+                            name="senha"
+                            class="form-input"
+                            placeholder="Digite sua senha"
+                            [ngClass]="{'input-error': submitted && !senha}"
+                            required />
+                        <i class="pi pi-lock input-icon"></i>
+                    </div>
+                    <small class="error-message" *ngIf="submitted && !senha">
+                        Senha é obrigatória
+                    </small>
+                </div>
+
+                <!-- Opções adicionais -->
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
+                        <span>Lembrar-me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </div>
+
+                <!-- Botão Submit -->
+                <p-button 
+                    type="submit" 
+                    label="Conectar" 
+                    icon="pi pi-box-arrow-in-right" 
+                    styleClass="btn-login"
+                    [loading]="isLoading"
+                    [disabled]="isLoading">
+                </p-button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Sistema de Notificações -->
+    <p-toast position="top-right"></p-toast>
+</div>

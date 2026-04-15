@@ -1,0 +1,298 @@
+// Variáveis
+$primary-gradient-start: #ffffff;
+$primary-gradient-end: #8d8d8d;
+$navbar-bg: #000000;
+$card-bg: #ffffff;
+$text-primary: #2d3748;
+$text-secondary: #718096;
+$border-color: #e2e8f0;
+$error-color: #f56565;
+$success-color: #48bb78;
+
+.login-wrapper {
+    min-height: 100vh;
+    background: linear-gradient(135deg, $primary-gradient-start 0%, $primary-gradient-end 100%);
+    position: relative;
+}
+
+// ==================== NAVBAR ====================
+.navbar {
+    background-color: $navbar-bg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        
+        @media (max-width: 768px) {
+            padding: 0 1rem;
+        }
+    }
+
+    .navbar-brand {
+        color: white;
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        i {
+            font-size: 1.5rem;
+        }
+        
+        &:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+}
+
+// ==================== CONTAINER PRINCIPAL ====================
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1rem 2rem;
+}
+
+// ==================== CARD DE LOGIN ====================
+.login-card {
+    max-width: 450px;
+    width: 100%;
+    background: $card-bg;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: fadeInUp 0.5s ease-out;
+    
+    @media (max-width: 640px) {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+}
+
+// ==================== HEADER DO LOGIN ====================
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $primary-gradient-start, $primary-gradient-end);
+    border-radius: 50%;
+    
+    .logo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    
+    .logo-fallback {
+        font-size: 2.5rem;
+        color: white;
+    }
+}
+
+.login-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 0.5rem;
+    
+    @media (max-width: 640px) {
+        font-size: 1.5rem;
+    }
+}
+
+.login-subtitle {
+    font-size: 0.875rem;
+    color: $text-secondary;
+    margin: 0;
+}
+
+// ==================== FORMULÁRIO ====================
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $text-primary;
+    
+    i {
+        font-size: 0.875rem;
+        color: $primary-gradient-start;
+    }
+}
+
+.input-wrapper {
+    position: relative;
+    
+    .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+        border: 1px solid $border-color;
+        border-radius: 10px;
+        font-size: 0.875rem;
+        transition: all 0.2s;
+        background: white;
+        
+        &:focus {
+            outline: none;
+            border-color: $primary-gradient-start;
+            box-shadow: 0 0 0 3px rgba($primary-gradient-start, 0.1);
+        }
+        
+        &.input-error {
+            border-color: $error-color;
+            
+            &:focus {
+                box-shadow: 0 0 0 3px rgba($error-color, 0.1);
+            }
+        }
+    }
+    
+    .input-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        color: $text-secondary;
+        pointer-events: none;
+    }
+}
+
+.error-message {
+    font-size: 0.75rem;
+    color: $error-color;
+    margin-top: 0.25rem;
+}
+
+// ==================== OPÇÕES DO FORMULÁRIO ====================
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        color: $text-secondary;
+        
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+    }
+    
+    .forgot-password {
+        color: $primary-gradient-start;
+        text-decoration: none;
+        transition: color 0.2s;
+        
+        &:hover {
+            color: $primary-gradient-end;
+            text-decoration: underline;
+        }
+    }
+}
+
+// ==================== BOTÃO ====================
+:host ::ng-deep {
+    .btn-login {
+        width: 100%;
+        
+        .p-button {
+            width: 100%;
+            background: linear-gradient(135deg, $primary-gradient-start, $primary-gradient-end);
+            border: none;
+            padding: 0.75rem;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            
+            &:hover:not(:disabled) {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
+            
+            &:active:not(:disabled) {
+                transform: translateY(0);
+            }
+            
+            .p-button-icon {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+
+// ==================== RODAPÉ ====================
+.login-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    border-top: 1px solid $border-color;
+    
+    p {
+        font-size: 0.75rem;
+        color: $text-secondary;
+        margin: 0;
+    }
+}
+
+// ==================== ANIMAÇÕES ====================
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ==================== RESPONSIVIDADE ====================
+@media (max-width: 640px) {
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .login-footer {
+        font-size: 0.7rem;
+    }
+}

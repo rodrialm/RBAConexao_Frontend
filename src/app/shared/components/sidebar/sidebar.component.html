@@ -1,0 +1,14 @@
+<p-sidebar [(visible)]="visible" 
+           [baseZIndex]="10000"
+           [style]="{width: '280px'}"
+           position="left"
+           [closeOnEscape]="true"
+           [dismissible]="true"
+           (onHide)="onCloseSidebar()">
+  
+  <div class="sidebar-header">
+    <h3 class="sidebar-title">Menu de Navegação</h3>
+  </div>
+  
+  <p-panelMenu [model]="menuItems" class="sidebar-menu"></p-panelMenu>
+</p-sidebar>

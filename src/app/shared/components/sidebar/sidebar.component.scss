@@ -1,0 +1,64 @@
+$sidebar-bg: #f8f9fa;
+$sidebar-border: #dee2e6;
+$text-dark: #333333;
+$border-radius: 6px;
+
+::ng-deep {
+  .p-sidebar {
+    background-color: $sidebar-bg;
+    border-right: 1px solid $sidebar-border;
+    
+    .p-sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid $sidebar-border;
+    }
+  }
+}
+
+.sidebar-header {
+  margin-bottom: 1rem;
+  
+  .sidebar-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $text-dark;
+  }
+}
+
+.sidebar-menu {
+  ::ng-deep {
+    .p-menu {
+      background: transparent;
+      border: none;
+      width: 100%;
+      
+      .p-menuitem-link {
+        padding: 0.75rem 1rem;
+        border-radius: $border-radius;
+        transition: all 0.2s;
+        
+        &:hover {
+          // Substituir darken por color.adjust
+          background-color: color.adjust($sidebar-bg, $lightness: -5%);
+        }
+      }
+      
+      .p-submenu-header {
+        background: transparent;
+        font-weight: 600;
+        padding: 0.75rem 1rem;
+        color: #495057;
+      }
+      
+      .p-menuitem-icon {
+        margin-right: 0.75rem;
+        font-size: 1rem;
+      }
+      
+      .p-menuitem-text {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}

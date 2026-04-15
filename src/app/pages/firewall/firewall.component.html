@@ -1,0 +1,139 @@
+<div class="layout-wrapper">
+  <!-- Skip Link para acessibilidade -->
+  <a href="#main-content" class="skip-link" aria-label="Pular para o conteúdo principal">
+    Pular para o conteúdo principal
+  </a>
+
+  <!-- Navbar -->
+  <nav class="navbar-custom" aria-label="Navegação principal">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <button pButton 
+                type="button" 
+                icon="pi pi-bars" 
+                class="p-button-text p-button-rounded menu-button"
+                pTooltip="Abrir menu lateral"
+                tooltipPosition="right"
+                title="Abrir menu lateral"
+                aria-label="Abrir menu lateral"
+                (click)="sidebarVisible = true"></button>
+        
+        <div class="logo-container">
+          <i class="pi pi-shield" aria-hidden="true"></i>
+          <span class="logo-text">RBA-Firewall</span>
+        </div>
+      </div>
+      
+      <div class="navbar-right">
+        <p-menu #userMenu [model]="userMenuItems" [popup]="true"></p-menu>
+        <button pButton 
+                type="button" 
+                class="p-button-text user-button"
+                pTooltip="Menu do usuário"
+                tooltipPosition="bottom"
+                title="Menu do usuário"
+                aria-label="Menu do usuário"
+                (click)="userMenu.toggle($event)">
+          <i class="pi pi-user" aria-hidden="true"></i>
+          <span class="button-text">Admin User</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="layout-content">
+    <!-- Sidebar -->
+    <p-sidebar [(visible)]="sidebarVisible" 
+               [baseZIndex]="10000"
+               [style]="{width: '280px'}"
+               position="left"
+               [closeOnEscape]="true"
+               [dismissible]="true"
+               aria-label="Menu lateral de navegação">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">Menu de Navegação</h3>
+      </div>
+      <p-menu [model]="menuItems" class="sidebar-menu"></p-menu>
+    </p-sidebar>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" role="main">
+      <!-- Header -->
+      <div class="header-section">
+        <div class="header-wrapper">
+          <div class="header-title">
+            <h1 class="title">Sites Liberados:</h1>
+            <h2 class="selected-file">{{arquivoSelecionado || 'Nenhum arquivo selecionado'}}</h2>
+          </div>
+          
+          <div class="header-actions">
+            <label for="fileDropdown" class="visually-hidden">Selecione um arquivo</label>
+            <p-dropdown id="fileDropdown"
+                        [options]="arquivosEncontrados" 
+                        [(ngModel)]="arquivoSelecionado"
+                        placeholder="-- Selecione um arquivo --"
+                        class="file-dropdown"
+                        optionLabel="label"
+                        optionValue="value"
+                        aria-label="Selecionar arquivo de configuração">
+            </p-dropdown>
+            
+            <button pButton 
+                    type="button" 
+                    label="Buscar" 
+                    icon="pi pi-search"
+                    class="p-button-outlined search-button"
+                    pTooltip="Buscar arquivo selecionado"
+                    tooltipPosition="top"
+                    title="Buscar arquivo selecionado"
+                    aria-label="Buscar arquivo selecionado"
+                    (click)="buscarArquivo()"
+                    [disabled]="!arquivoSelecionado"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editor -->
+      <div class="editor-container">
+        <label for="textoArquivo" class="visually-hidden">Conteúdo do arquivo</label>
+        <textarea pTextarea
+                  id="textoArquivo"
+                  [(ngModel)]="textoDoArquivo"
+                  class="custom-textarea"
+                  placeholder="Nenhum site encontrado! Selecione um arquivo para começar..."
+                  rows="18"
+                  aria-label="Editor de conteúdo do arquivo"
+                  aria-describedby="editorHelp"></textarea>
+        <div id="editorHelp" class="visually-hidden">Área de edição do conteúdo do arquivo de configuração do firewall</div>
+        
+        <div class="editor-actions">
+          <button pButton 
+                  type="button" 
+                  label="Salvar" 
+                  icon="pi pi-save"
+                  class="p-button-primary save-button"
+                  pTooltip="Salvar alterações no arquivo"
+                  tooltipPosition="top"
+                  title="Salvar alterações no arquivo"
+                  aria-label="Salvar alterações no arquivo"
+                  (click)="salvarArquivo()"
+                  [disabled]="!arquivoSelecionado || !textoDoArquivo"></button>
+          
+          <button pButton 
+                  type="button" 
+                  label="Reconfigurar" 
+                  icon="pi pi-refresh"
+                  class="p-button-secondary reconfigure-button"
+                  pTooltip="Reconfigurar firewall"
+                  tooltipPosition="top"
+                  title="Reconfigurar firewall"
+                  aria-label="Reconfigurar firewall"
+                  (click)="reconfigurar()"></button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast para notificações -->
+  <p-toast position="top-right" [baseZIndex]="10000"></p-toast>
+</div>
