@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MainLayoutComponent } from '../../layouts/main-layout/main-layout.component';
 
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
@@ -14,10 +15,12 @@ import { TooltipModule } from 'primeng/tooltip';
 
 import { MenuItem } from 'primeng/api';
 
+
 @Component({
   selector: 'app-firewall',
   standalone: true,
   imports: [
+    MainLayoutComponent,
     CommonModule,
     FormsModule,
     ButtonModule,

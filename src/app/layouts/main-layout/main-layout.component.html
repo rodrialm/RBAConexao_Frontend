@@ -1,1 +1,67 @@
-<p>main-layout works!</p>
+<div class="layout-wrapper">
+  <!-- Skip Link para acessibilidade -->
+  <a href="#main-content" class="skip-link" aria-label="Pular para o conteúdo principal">
+    Pular para o conteúdo principal
+  </a>
+
+  <!-- Navbar -->
+  <nav class="navbar-custom" aria-label="Navegação principal">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <button pButton 
+                type="button" 
+                icon="pi pi-bars" 
+                class="p-button-text p-button-rounded menu-button"
+                pTooltip="Abrir menu lateral"
+                tooltipPosition="right"
+                title="Abrir menu lateral"
+                aria-label="Abrir menu lateral"
+                (click)="sidebarVisible = true"></button>
+        
+        <div class="logo-container">
+          <i class="pi pi-shield" aria-hidden="true"></i>
+          <span class="logo-text">RBA-Firewall</span>
+        </div>
+      </div>
+      
+      <div class="navbar-right">
+        <p-menu #userMenu [model]="userMenuItems" [popup]="true"></p-menu>
+        <button pButton 
+                type="button" 
+                class="p-button-text user-button"
+                pTooltip="Menu do usuário"
+                tooltipPosition="bottom"
+                title="Menu do usuário"
+                aria-label="Menu do usuário"
+                (click)="userMenu.toggle($event)">
+          <i class="pi pi-user" aria-hidden="true"></i>
+          <span class="button-text">Admin User</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="layout-content">
+    <!-- Sidebar -->
+    <p-sidebar [(visible)]="sidebarVisible" 
+               [baseZIndex]="10000"
+               [style]="{width: '280px'}"
+               position="left"
+               [closeOnEscape]="true"
+               [dismissible]="true"
+               aria-label="Menu lateral de navegação">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">Menu de Navegação</h3>
+      </div>
+      <p-menu [model]="menuItems" class="sidebar-menu"></p-menu>
+    </p-sidebar>
+
+    <!-- Main Content - AQUI é onde o conteúdo de cada página vai aparecer -->
+    <main id="main-content" class="main-content" role="main">
+      <router-outlet></router-outlet> <!-- 👈 IMPORTANTE: O conteúdo das rotas aparece aqui -->
+    </main>
+  </div>
+
+  <!-- Toast para notificações -->
+  <p-toast position="top-right" [baseZIndex]="10000"></p-toast>
+</div>

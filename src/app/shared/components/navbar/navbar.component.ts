@@ -29,7 +29,7 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit{
-  @Input() nomeUsuario: string = 'Admin User';
+  @Input() nomeUsuario: string = 'AdministradorTest';
   @Output() toggleSidebar = new EventEmitter<void>();
   
   userMenuItems: MenuItem[] = [];
