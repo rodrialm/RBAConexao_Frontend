@@ -40,7 +40,7 @@ $border-radius: 6px;
         
         &:hover {
           // Substituir darken por color.adjust
-          background-color: color.adjust($sidebar-bg, $lightness: -5%);
+          background-color: #000000;
         }
       }
       

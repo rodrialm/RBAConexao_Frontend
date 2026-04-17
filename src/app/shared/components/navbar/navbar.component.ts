@@ -10,7 +10,8 @@ import { BadgeModule } from 'primeng/badge';
 import { TooltipModule } from 'primeng/tooltip';
 import { RippleModule } from 'primeng/ripple';
 
-import { MenuItem } from 'primeng/api';
+import { PrimeIcons,MenuItem } from 'primeng/api';
+import { InputIconModule } from 'primeng/inputicon';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,8 @@ import { MenuItem } from 'primeng/api';
     AvatarModule,
     BadgeModule,
     TooltipModule,
-    RippleModule
+    RippleModule,
+    InputIconModule
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
