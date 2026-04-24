@@ -5,7 +5,7 @@ $navbar-bg: #000000;
 $card-bg: #ffffff;
 $text-primary: #2d3748;
 $text-secondary: #718096;
-$border-color: #e2e8f0;
+$border-color: #7a7a7a;
 $error-color: #f56565;
 $success-color: #48bb78;
 
@@ -94,8 +94,8 @@ $success-color: #48bb78;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, $primary-gradient-start, $primary-gradient-end);
-    border-radius: 50%;
+    background: linear-gradient(135deg, #718096, #000000);
+    border-radius: 50%, #e40404;
     
     .logo-img {
         width: 100%;
